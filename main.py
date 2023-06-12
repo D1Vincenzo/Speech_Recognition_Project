@@ -19,4 +19,7 @@ save_transcription(text)
 '''
 
 # Preprocess and find most similiar command
-find_the_most_similar_command(text)
+if find_the_most_similar_command(text):
+    print("Command received:", find_the_most_similar_command(text)) 
+else: 
+    print("Command not recognized. Please try again.")
