@@ -4,8 +4,8 @@ import os
 
 # Suppose commands is a list of strings with the commands for your robot
 commands = ["righthand", "lefthand", "move forward", "turn left", "pick up the object", "stop", 
-                  "turn right", "move backward", "go right", "go left", 
-                  "go straight", "go", "move"]
+                  "turn right", "backward", "go right", "go left", 
+                  "go straight", "go", "move", "back"]
 
 # Tokenize and preprocess the commands
 sentences = [simple_preprocess(command) for command in commands]

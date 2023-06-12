@@ -19,7 +19,7 @@ def find_the_most_similar_command(new_commands):
     model = Word2Vec.load("word2vec_model")
 
     known_commands = ["move forward", "left", "pick", "stop", 
-                    "right", "backward", "go straight"]
+                    "right", "back", "backward", "go straight"]
 
     known_command_vectors = [vectorize_command(command, model) for command in known_commands]
 
