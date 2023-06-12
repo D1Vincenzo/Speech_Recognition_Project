@@ -35,5 +35,4 @@ def find_the_most_similar_command(new_command):
 
     # Find the most similar command
     most_similar_command = known_commands[np.argmax(similarities)]
-    print('Most similar command is:', most_similar_command)
-
+    print("Most similar command is:", most_similar_command)
