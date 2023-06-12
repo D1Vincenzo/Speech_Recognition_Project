@@ -17,5 +17,5 @@ print(text)
 # Save the transcription
 save_transcription(text)
 
-# Preprocess
+# Preprocess and find most similiar command
 find_the_most_similar_command(text)
