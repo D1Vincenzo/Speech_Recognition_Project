@@ -18,21 +18,23 @@ def vectorize_command(command, model):
 def get_user_command():
     return input("Please give a command: ")
 
-def find_the_most_similar_command(new_command):
+def find_the_most_similar_command(new_commands):
     # Load the model from the file
     model = Word2Vec.load("word2vec_model")
 
     known_commands = ["move forward", "left", "pick", "stop", 
                     "right", "backward", "go straight"]
-
+#
     known_command_vectors = [vectorize_command(command, model) for command in known_commands]
 
+    split_commands = new_commands.split('and')
+    for new_command in split_commands:
 
-    new_command_vector = vectorize_command(new_command, model)
+        new_command_vector = vectorize_command(new_command, model)
 
-    # Calculate cosine similarities
-    similarities = [np.dot(new_command_vector, vec)/(np.linalg.norm(new_command_vector)* np.linalg.norm(vec)) for vec in known_command_vectors]
+        # Calculate cosine similarities
+        similarities = [np.dot(new_command_vector, vec)/(np.linalg.norm(new_command_vector)* np.linalg.norm(vec)) for vec in known_command_vectors]
 
-    # Find the most similar command
-    most_similar_command = known_commands[np.argmax(similarities)]
-    print("Most similar command is:", most_similar_command)
+        # Find the most similar command
+        most_similar_command = known_commands[np.argmax(similarities)]
+        print("Most similar command is:", most_similar_command)
