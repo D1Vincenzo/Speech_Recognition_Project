@@ -11,8 +11,7 @@ print('Transcribe started')
 # Upload & Transcribe
 text = transcribe(file_name)
 
-print('Transcribe complete:')
-print(text)
+print('Transcribe complete:', text)
 
 # Save the transcription
 save_transcription(text)
