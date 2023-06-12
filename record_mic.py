@@ -6,7 +6,7 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 16000
 
-def record_audio(filename, seconds=5):
+def record_audio(filename, seconds = 3):
     try:
         p = pyaudio.PyAudio()
 

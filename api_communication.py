@@ -32,7 +32,7 @@ def wait_for_transcription(transcript_id):
         elif transcription_result['status'] == 'error':
             raise RuntimeError(f"Transcription failed: {transcription_result['error']}")
         else:
-            print('Waiting for 3 second...')
+            print('Waiting for 3 more seconds...')
             time.sleep(3)
 
 def save_transcription(transcription_text):
