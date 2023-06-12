@@ -18,7 +18,7 @@ print('Transcribe complete:', text)
 save_transcription(text)
 '''
 
-# Preprocess and find most similiar command
+# Preprocess & find most similiar command
 if find_the_most_similar_command(text):
     print("Command received:", find_the_most_similar_command(text)) 
 else: 
