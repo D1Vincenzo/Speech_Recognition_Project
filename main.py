@@ -1,5 +1,6 @@
 from record_mic import record_audio
 from api_communication import *
+from word_embedding_test import *
 
 # Record
 file_name = 'output_new.wav'
