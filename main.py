@@ -9,14 +9,13 @@ record_audio(file_name)
 print('Transcribe started')
 
 # Upload & Transcribe
-upload_url = upload_audio(file_name)
-transcript_id = start_transcription(upload_url)
-transcription_text = wait_for_transcription(transcript_id)
+text = transcribe(file_name)
 
 print('Transcribe complete:')
-
-print(transcription_text)
+print(text)
 
 # Save the transcription
-save_transcription(transcription_text)
+save_transcription(text)
 
+# Preprocess
+find_the_most_similar_command(text)

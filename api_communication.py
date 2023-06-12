@@ -39,3 +39,9 @@ def save_transcription(transcription_text):
     with open('transcription.txt', 'w') as f:
         f.write(transcription_text)
     print('Transcription saved')
+
+def transcribe(file_name):
+    upload_url = upload_audio(file_name)
+    transcript_id = start_transcription(upload_url)
+    transcription_text = wait_for_transcription(transcript_id)
+    return transcription_text
