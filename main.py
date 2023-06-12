@@ -13,8 +13,10 @@ text = transcribe(file_name)
 
 print('Transcribe complete:', text)
 
+'''
 # Save the transcription
 save_transcription(text)
+'''
 
 # Preprocess and find most similiar command
 find_the_most_similar_command(text)
