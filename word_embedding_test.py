@@ -24,13 +24,26 @@ def find_the_most_similar_command(new_commands):
 
     known_commands = ["move forward", "left", "pick", "stop", 
                     "right", "backward", "go straight"]
-#
+
     known_command_vectors = [vectorize_command(command, model) for command in known_commands]
+
+    # Check if the new command is empty
+    if not new_commands.strip():
+        print("Command not recognized. Please try again.")
+        return
 
     split_commands = new_commands.split('and')
     for new_command in split_commands:
 
+        # Ignore the command if it is empty ('and go and pick')
+        if not new_command:
+            continue
+
         new_command_vector = vectorize_command(new_command, model)
+        
+        if new_command_vector is None:
+            print("Command not recognized. Please try again.")
+            break
 
         # Calculate cosine similarities
         similarities = [np.dot(new_command_vector, vec)/(np.linalg.norm(new_command_vector)* np.linalg.norm(vec)) for vec in known_command_vectors]
