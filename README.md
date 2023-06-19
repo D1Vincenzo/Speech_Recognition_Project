@@ -35,3 +35,6 @@ The cosine similarity between the vectorized transcription and each known comman
 4. The transcription is retrieved from AssemblyAI and returned as plain text.
 5. **`word_embedding_test.py`** processes the transcribed text to identify any commands.
 6. If a command is identified, it is printed to the console. If no command is identified, the program prints a message indicating that no command was recognized.
+
+<img width="485" alt="image" src="https://github.com/D1Vincenzo/Speech_Recognition_Project/assets/106391907/00afa74e-80b0-4f17-a458-d5abb85e8504">
+
