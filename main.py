@@ -14,7 +14,7 @@ text = transcribe(file_name)
 print('Transcribe complete:', text)
 
 '''
-# Save the transcription
+# Save the transcription in txt
 save_transcription(text)
 '''
 
