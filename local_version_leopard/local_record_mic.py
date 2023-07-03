@@ -1,13 +1,13 @@
 import pyaudio
 import wave
+import threading
 
 FRAME_PER_BUFFER = 3200
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 16000
 
-# CHANGE THE RECORD TIME HERE
-def record_audio(filename, seconds = 7):
+def record_audio(filename):
     try:
         p = pyaudio.PyAudio()
 
@@ -22,12 +22,19 @@ def record_audio(filename, seconds = 7):
         print('Start recording...')
 
         frames = []
-        for i in range(0, int(RATE/FRAME_PER_BUFFER*seconds)):
+        is_recording = True
+
+        def check_input():
+            nonlocal is_recording
+            input("Press Enter to stop recording\n")
+            is_recording = False
+
+        thread = threading.Thread(target=check_input)
+        thread.start()
+
+        while is_recording:
             data = stream.read(FRAME_PER_BUFFER)
             frames.append(data)
-            # Timer
-            remaining = seconds - (i * FRAME_PER_BUFFER / RATE)
-            print(f"Time remaining: {remaining:.2f}")
 
         stream.stop_stream()
         stream.close()
