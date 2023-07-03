@@ -1,4 +1,7 @@
 from word_embedding_test import *
-order = 'q2183781goandpick'
+text = 'go backward'
 
-find_the_most_similar_command(order)
+if find_the_most_similar_command(text):
+    print("command received:", find_the_most_similar_command(text)) 
+else: 
+    print("Command not recognized. Please try again.")
