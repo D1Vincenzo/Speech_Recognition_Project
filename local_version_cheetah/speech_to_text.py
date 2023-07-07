@@ -10,6 +10,7 @@ model_path = None
 endpoint_duration_sec = 1.0
 enable_automatic_punctuation = True
 audio_device_index = -1
+timeout = 10.0
 
 stop_flag = threading.Event()
 def check_stop():
@@ -39,11 +40,10 @@ def listen_and_transcribe():
                 if partial_transcript:
                     text += partial_transcript
                 if is_endpoint:
-                    print(time.time() - last_input_time)
                     last_input_time = time.time()
                     yield text+cheetah.flush()
                     text = ''
-                if time.time() - last_input_time > 10.0:
+                if time.time() - last_input_time > timeout:
                     break
         finally:
             print()
