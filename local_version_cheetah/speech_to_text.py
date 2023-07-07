@@ -11,6 +11,11 @@ endpoint_duration_sec = 1.0
 enable_automatic_punctuation = True
 audio_device_index = -1
 
+stop_flag = threading.Event()
+def check_stop():
+    input()
+    stop_flag.set()
+
 def listen_and_transcribe():
     cheetah = pvcheetah.create(
         access_key=ACCESS_KEY,
@@ -19,14 +24,7 @@ def listen_and_transcribe():
         endpoint_duration_sec=endpoint_duration_sec,
         enable_automatic_punctuation=enable_automatic_punctuation)
 
-    stop_flag = threading.Event()
-
-    def check_stop():
-        input()
-        stop_flag.set()
-
     threading.Thread(target=check_stop).start()
-
 
     try:
         recorder = PvRecorder(device_index=audio_device_index, frame_length=cheetah.frame_length)
