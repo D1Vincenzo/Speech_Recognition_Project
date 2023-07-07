@@ -2,6 +2,7 @@ from pvrecorder import PvRecorder
 import pvcheetah
 from AccessKey import ACCESS_KEY
 import threading
+import time 
 
 # Hardcoded values
 library_path = None
@@ -26,11 +27,12 @@ def listen_and_transcribe():
 
     threading.Thread(target=check_stop).start()
 
-    try:
 
+    try:
         recorder = PvRecorder(device_index=audio_device_index, frame_length=cheetah.frame_length)
         recorder.start()
         print('Listening... (press Ctrl+C or Enter to stop)')
+        last_input_time = time.time()
 
         try:
             text = ''
@@ -39,8 +41,12 @@ def listen_and_transcribe():
                 if partial_transcript:
                     text += partial_transcript
                 if is_endpoint:
+                    print(time.time() - last_input_time)
+                    last_input_time = time.time()
                     yield text+cheetah.flush()
                     text = ''
+                if time.time() - last_input_time > 10.0:
+                    break
         finally:
             print()
             recorder.stop()
