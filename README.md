@@ -1,4 +1,7 @@
 # Speech_Recognition_Project
+Readme.md last updated: Jun 20 2023, will update the new function soon...
+
+
 Library used: gensim numpy pyaudio wave time requests
 
 The program aims to transcribe spoken language into written text and then identify specific commands within the transcribed text. It is implemented in Python and uses the AssemblyAI API for speech-to-text transcription.
