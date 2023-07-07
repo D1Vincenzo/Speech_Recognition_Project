@@ -16,7 +16,7 @@ text = transcribe(file_name)
 
 end_time = time.time()
 
-print('Transcribe complete:{} \n Transcription time:{} seconds'.format(text, end_time - start_time))
+print('Transcribe complete:{} \n Transcription time:{:.2f} seconds'.format(text, end_time - start_time))
 
 '''
 # Save the transcription in txt if needed
